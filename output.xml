@@ -1,88 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.11.1 on win32)" generated="20221229 21:15:23.513" rpa="false" schemaversion="3">
-<suite id="s1" name="testDemo1" source="C:\Users\dti Digital\PycharmProjects\robotFramework\tests\testDemo1.robot">
-<test id="s1-t1" name="Validate Unsucessful Login" line="12">
-<kw name="Open the browser with the Mortgage payment url">
+<robot generator="Robot 6.0.1 (Python 3.11.1 on win32)" generated="20221229 19:09:18.284" rpa="false" schemaversion="3">
+<suite id="s1" name="robotFramework" source="C:\Users\dti Digital\PycharmProjects\robotFramework">
+<suite id="s1-s1" name="Tests" source="C:\Users\dti Digital\PycharmProjects\robotFramework\tests">
+<suite id="s1-s1-s1" name="testDemo1" source="C:\Users\dti Digital\PycharmProjects\robotFramework\tests\testDemo1.robot">
+<test id="s1-s1-s1-t1" name="Validate Unsucessful Login" line="10">
+<kw name="open the browser with the Mortgage payment url">
 <kw name="Create Webdriver" library="SeleniumLibrary">
 <arg>Chrome</arg>
 <arg>executable_path=./webdriver/chrome/chromedriver.exe</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<msg timestamp="20221229 21:15:23.756" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<status status="PASS" starttime="20221229 21:15:23.756" endtime="20221229 21:15:25.246"/>
+<msg timestamp="20221229 19:09:18.557" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221229 19:09:22.267" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg timestamp="20221229 19:09:22.268" level="FAIL">SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 109
+Current browser version is 108.0.5359.125 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+Backtrace:
+	(No symbol) [0x010A4AD3]
+	(No symbol) [0x01039211]
+	(No symbol) [0x00F2D9CD]
+	(No symbol) [0x00F526D1]
+	(No symbol) [0x00F4D3F0]
+	(No symbol) [0x00F4A659]
+	(No symbol) [0x00F86677]
+	(No symbol) [0x00F862BC]
+	(No symbol) [0x00F7F936]
+	(No symbol) [0x00F54788]
+	(No symbol) [0x00F55C1D]
+	GetHandleVerifier [0x01319342+2502274]
+	GetHandleVerifier [0x01347959+2692249]
+	GetHandleVerifier [0x0134ABDC+2705180]
+	GetHandleVerifier [0x01153480+643008]
+	(No symbol) [0x0104208F]
+	(No symbol) [0x01047AB8]
+	(No symbol) [0x01047BA5]
+	(No symbol) [0x0105273B]
+	BaseThreadInitThunk [0x752800F9+25]
+	RtlGetAppContainerNamedObjectPath [0x770F7BBE+286]
+	RtlGetAppContainerNamedObjectPath [0x770F7B8E+238]
+</msg>
+<status status="FAIL" starttime="20221229 19:09:18.557" endtime="20221229 19:09:22.274"/>
 </kw>
 <kw name="Go To" library="SeleniumLibrary">
 <arg>https://rahulshettyacademy.com/loginpagePractise/</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20221229 21:15:25.246" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
-<status status="PASS" starttime="20221229 21:15:25.246" endtime="20221229 21:15:26.586"/>
+<status status="NOT RUN" starttime="20221229 19:09:22.274" endtime="20221229 19:09:22.274"/>
 </kw>
-<status status="PASS" starttime="20221229 21:15:23.756" endtime="20221229 21:15:26.586"/>
+<status status="FAIL" starttime="20221229 19:09:18.556" endtime="20221229 19:09:22.274"/>
 </kw>
-<kw name="Fill the login Form">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:username</arg>
-<arg>rahulshettyacademy</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20221229 21:15:26.588" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
-<status status="PASS" starttime="20221229 21:15:26.586" endtime="20221229 21:15:26.658"/>
-</kw>
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>id:password</arg>
-<arg>12345678</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20221229 21:15:26.659" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg timestamp="20221229 21:15:26.688" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20221229 21:15:26.719" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20221229 21:15:26.659" endtime="20221229 21:15:26.719"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>signInBtn</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20221229 21:15:26.719" level="INFO">Clicking button 'signInBtn'.</msg>
-<status status="PASS" starttime="20221229 21:15:26.719" endtime="20221229 21:15:26.763"/>
-</kw>
-<status status="PASS" starttime="20221229 21:15:26.586" endtime="20221229 21:15:26.763"/>
-</kw>
-<kw name="Wait until it checks and display error message">
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css:.alert-danger</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20221229 21:15:26.763" endtime="20221229 21:15:28.941"/>
-</kw>
-<status status="PASS" starttime="20221229 21:15:26.763" endtime="20221229 21:15:28.941"/>
-</kw>
-<kw name="Verify error message is correct">
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${result}</var>
-<arg>css:.alert-danger</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20221229 21:15:28.955" level="INFO">${result} = Incorrect username/password.</msg>
-<status status="PASS" starttime="20221229 21:15:28.941" endtime="20221229 21:15:28.955"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${result}</arg>
-<arg>Incorrect username/password.</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20221229 21:15:28.955" endtime="20221229 21:15:28.955"/>
-</kw>
-<status status="PASS" starttime="20221229 21:15:28.941" endtime="20221229 21:15:28.955"/>
-</kw>
-<status status="PASS" starttime="20221229 21:15:23.755" endtime="20221229 21:15:28.956"/>
+<status status="FAIL" starttime="20221229 19:09:18.556" endtime="20221229 19:09:22.274">SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 109
+Current browser version is 108.0.5359.125 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+Backtrace:
+	(No symbol) [0x010A4AD3]
+	(No symbol) [0x01039211]
+	(No symbol) [0x00F2D9CD]
+	(No symbol) [0x00F526D1]
+	(No symbol) [0x00F4D3F0]
+	(No symbol) [0x00F4A659]
+	(No symbol) [0x00F86677]
+	(No symbol) [0x00F862BC]
+	(No symbol) [0x00F7F936]
+	(No symbol) [0x00F54788]
+	(No symbol) [0x00F55C1D]
+	GetHandleVerifier [0x01319342+2502274]
+	GetHandleVerifier [0x01347959+2692249]
+	GetHandleVerifier [0x0134ABDC+2705180]
+	GetHandleVerifier [0x01153480+643008]
+	(No symbol) [0x0104208F]
+	(No symbol) [0x01047AB8]
+	(No symbol) [0x01047BA5]
+	(No symbol) [0x0105273B]
+	BaseThreadInitThunk [0x752800F9+25]
+	RtlGetAppContainerNamedObjectPath [0x770F7BBE+286]
+	RtlGetAppContainerNamedObjectPath [0x770F7B8E+238]
+</status>
 </test>
 <doc>To validate the Login form</doc>
-<status status="PASS" starttime="20221229 21:15:23.516" endtime="20221229 21:15:28.956"/>
+<status status="FAIL" starttime="20221229 19:09:18.308" endtime="20221229 19:09:22.275"/>
+</suite>
+<status status="FAIL" starttime="20221229 19:09:18.307" endtime="20221229 19:09:22.276"/>
+</suite>
+<status status="FAIL" starttime="20221229 19:09:18.287" endtime="20221229 19:09:22.276"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="testDemo1">testDemo1</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="robotFramework">robotFramework</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">robotFramework.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="testDemo1">robotFramework.Tests.testDemo1</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20221229 21:15:23.508" level="ERROR">Error in file 'C:\Users\dti Digital\PycharmProjects\robotFramework\tests\testDemo1.robot' on line 8: Setting 'Documentation' is allowed only once. Only the first value is used.</msg>
 </errors>
 </robot>
