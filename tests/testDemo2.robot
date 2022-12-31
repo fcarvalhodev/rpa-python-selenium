@@ -13,23 +13,30 @@ Resource         resource.robot
 
 *** Variables ***
 ${Error_Message_Login}       css:.alert-danger
+${Shop_Page_Load}            css.nav-link
 
 *** Test Cases ***
 Validate Unsucessful Login
     Open the browser with the Mortgage payment url
-    Fill the login Form
-    Wait until it checks and display error message
+    Fill the login Form     ${user_name}        ${invalid_password}
+    Wait until it Element is located in the page    ${Error_Message_Login}
     Verify error message is correct
+
+Validate Cards display in the Shopping Page
+    Fill The Login Form     ${user_name}        ${valid_password}
+    Wait until it Element is located in the page    ${Shop_Page_Load}
 
 *** Keywords ***
 Fill the login Form
-    Input Text       id:username        ${user_name}
-    Input Password   id:password        ${invalid_password}
+    [Arguments]     ${username}     ${password}
+    #argumentos passados via parametro.
+    Input Text       id:username        ${username}
+    Input Password   id:password        ${password}
     Click Button     signInBtn
 
-Wait until it checks and display error message
-    Wait Until Element Is Visible    ${Error_Message_Login}
-
+Wait until it Element is located in the page
+    [Arguments]     ${element}
+    Wait Until Element Is Visible    ${element}
 
 Verify error message is correct
   ${result}=  Get Text    css:.alert-danger

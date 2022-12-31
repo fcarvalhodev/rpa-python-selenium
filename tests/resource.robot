@@ -11,6 +11,7 @@ Library         OperatingSystem
 ${user_name}            rahulshettyacademy
 ${invalid_password}     12345678
 ${url}                  https://rahulshettyacademy.com/loginpagePractise/
+${valid_password}       learning
 
 *** Keywords ***
 Open the browser with the Mortgage payment url
