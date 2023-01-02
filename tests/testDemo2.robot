@@ -29,6 +29,9 @@ Validate Cards display in the Shopping Page
     Verify Card Titles In The Shop Page
     Select The Card     Nokia Edge
 
+Select The Form And Navigate To Child Window
+    Fill The Login Details And Select The User Option     ${user_name}        ${valid_password}
+
 *** Keywords ***
 Fill the login Form
     [Arguments]     ${username}     ${password}
@@ -70,3 +73,16 @@ Select The Card
                ${index}=   Evaluate    ${index} + 1
     END
     Click Button    xpath:(//*[@class='card-footer'])[${index}]/button[@class='btn btn-info']
+
+#Teste que utiliza o seletor de elemento para checkar o radio button
+Fill The Login Details And Select The User Option
+    [Arguments]     ${username}     ${password}
+    Input Text       id:username        ${username}
+    Input Password   id:password        ${password}
+    Click Element    css:input[value='user']
+    Wait Until Element Is Visible    okayBtn
+    Double Click Element       id:okayBtn
+    Wait Until Element Is Not Visible    okayBtn
+    Select From List By Value    css:select.form-control        teach
+    Select Checkbox     id:terms
+    Checkbox Should Be Selected    id:terms
