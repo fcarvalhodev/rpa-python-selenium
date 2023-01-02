@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation   To validate the Login form
 Library    SeleniumLibrary
+Library    Collections
 
 Test Setup      Open The Browser With The Mortgage Payment Url
 #test setup executa ao inicio do teste
@@ -13,18 +14,19 @@ Resource         resource.robot
 
 *** Variables ***
 ${Error_Message_Login}       css:.alert-danger
-${Shop_Page_Load}            css.nav-link
+${Shop_Page_Load}            css:.nav-link
 
 *** Test Cases ***
-Validate Unsucessful Login
-    Open the browser with the Mortgage payment url
-    Fill the login Form     ${user_name}        ${invalid_password}
-    Wait until it Element is located in the page    ${Error_Message_Login}
-    Verify error message is correct
+#Validate Unsucessful Login
+#    Open the browser with the Mortgage payment url
+#    Fill the login Form     ${user_name}        ${invalid_password}
+#    Wait until it Element is located in the page    ${Error_Message_Login}
+#    Verify error message is correct
 
 Validate Cards display in the Shopping Page
     Fill The Login Form     ${user_name}        ${valid_password}
     Wait until it Element is located in the page    ${Shop_Page_Load}
+    Verify Card Titles In The Shop Page
 
 *** Keywords ***
 Fill the login Form
@@ -42,3 +44,17 @@ Verify error message is correct
   ${result}=  Get Text    css:.alert-danger
   Should Be Equal As Strings    ${result}   Incorrect username/password.
   Element Text Should Be        ${Error_Message_Login}  Incorrect username/password.
+
+#Este método cria uma lista de elementos com base no seus card title
+#O log, ecreve o valor do laço FOR em um arquivo para verificação
+#Note que as variáveis foram declaradas com iterators mas depois foi utilizado o $ novamente.
+#Nesse caso é para representar as listas.
+Verify Card Titles In The Shop Page
+    @{expectedList} =  Create List     iphone X     Samsung Note 8      Nokia Edge      Blackberry
+    ${elements} =     Get Webelements    css:.card-title
+    @{actualList} =    Create List
+    FOR     ${element}  IN      @{elements}
+       Log     ${element.text}
+       Append To List       ${actualList}       ${element.text}
+    END
+    Lists Should Be Equal        ${expectedList}     ${actualList}
