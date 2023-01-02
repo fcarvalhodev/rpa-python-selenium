@@ -27,6 +27,7 @@ Validate Cards display in the Shopping Page
     Fill The Login Form     ${user_name}        ${valid_password}
     Wait until it Element is located in the page    ${Shop_Page_Load}
     Verify Card Titles In The Shop Page
+    Select The Card     Nokia Edge
 
 *** Keywords ***
 Fill the login Form
@@ -58,3 +59,14 @@ Verify Card Titles In The Shop Page
        Append To List       ${actualList}       ${element.text}
     END
     Lists Should Be Equal        ${expectedList}     ${actualList}
+
+#Função genérica que busca um item pelo seu índice.
+Select The Card
+    [Arguments]     ${cardName}
+    ${elements} =     Get Webelements    css:.card-title
+    ${index}=   Set Variable    0
+    FOR     ${element}  IN      @{elements}
+               Exit For Loop If     '${cardName}' == '${element.text}'
+               ${index}=   Evaluate    ${index} + 1
+    END
+    Click Button    xpath:(//*[@class='card-footer'])[${index}]/button[@class='btn btn-info']
